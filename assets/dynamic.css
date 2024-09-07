@@ -11,14 +11,15 @@ body {
     font-size: 1rem;
     line-height: 1.54;
     letter-spacing: -.02em;
-    background-color: #fff; /* Changed to light mode default */
-    color: #000; /* Changed to light mode default */
+    background-color: var(--background); /* Changed to use CSS variable */
+    color: var(--color); /* Changed to use CSS variable */
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     font-feature-settings: "liga" 1, "tnum" 1, "case" 1, "calt" 1, "zero" 1, "ss01" 1, "locl" 1, "calt" 1;
     font-variant-ligatures: contextual;
     -webkit-overflow-scrolling: touch;
     -webkit-text-size-adjust: 100%;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Added for smooth transition */
 }
 @media (max-width: 684px) {
     body {
@@ -738,11 +739,13 @@ pre[data-line] {
     --accent: #007bff;
     --phoneWidth: (max-width: 684px);
     --tabletWidth: (max-width: 900px);
-    --accent: #007bff;
+    --background: #fff;
+    --color: #000;
+    --border-color: rgba(0, 0, 0, 0.1);
 }
 @custom-media --phone (max-width: 684px);
 @custom-media --tablet (max-width: 900px);
-.dark-mode, :root {
+.dark-mode {
     --background: rgb(28, 32, 44);
     --color: #fff;
     --border-color: hsla(0, 0%, 100%, 0.1);
@@ -754,13 +757,12 @@ pre[data-line] {
     color: #000;
 }
 .light-mode {
-    --background: #fff; /* light mode background */
-    --color: #000; /* light mode text color */
-    --border-color: rgba(0, 0, 0, 0.1); /* light mode border color */
+    --background: #fff;
+    --color: #000;
+    --border-color: rgba(0, 0, 0, 0.1);
     transition: all .25s linear;
 }
 .light-mode .logo {
     color: #fff;
     transition: all .25s linear;
 }
-
